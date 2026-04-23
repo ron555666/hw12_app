@@ -1,0 +1,7 @@
+[run]
+omit =
+    app/data_init.py
+
+[report]
+show_missing = True
+fail_under = 80
