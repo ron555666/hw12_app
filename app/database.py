@@ -1,15 +1,21 @@
-from sqlmodel import create_engine, Session
+import os
+from sqlmodel import SQLModel, Session, create_engine
+from dotenv import load_dotenv
 
-DATABASE_URL=DATABASE_URL = "sqlite:///./test.db"
+load_dotenv()
 
-engine = create_engine(
-    DATABASE_URL,
-    echo=True
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    "postgresql://postgres:postgres@localhost:5432/hw12_app"
 )
+
+engine = create_engine(DATABASE_URL, echo=True)
+
+
+def create_db_and_tables():
+    SQLModel.metadata.create_all(engine)
+
 
 def get_session():
     with Session(engine) as session:
         yield session
-        # FastAPI pattern
-
-        # return session
