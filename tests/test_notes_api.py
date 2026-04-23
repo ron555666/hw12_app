@@ -27,8 +27,8 @@ def test_get_notes(client):
     create_note_user(client)
 
     create_res = client.post("/notes/", json={
-        "title": "note 1",
-        "content": "aaa"
+        "title": "note for test_get_notes",
+        "content": "content for test_content"
     })
     assert create_res.status_code in (200, 201)
 

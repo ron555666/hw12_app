@@ -55,7 +55,7 @@ def test_unauthorized_access_to_notes(unauthorized_client):
 
 def test_login_user_not_found(client):
     response = client.post("/auth/login", data={
-        "username": "notexist",
+        "username": "notexistqwerty",
         "password": "123456"
     })
 
